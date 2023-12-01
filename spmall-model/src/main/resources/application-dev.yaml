@@ -1,0 +1,9 @@
+spring:
+  application:
+    name:
+  datasource:
+    username: root
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql
+server:
+  port: 9900
