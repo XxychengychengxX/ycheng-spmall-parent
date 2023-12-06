@@ -1,9 +1,11 @@
 package com.project.ychengspmall.model.entity.system;
 
-import com.atguigu.spzx.model.entity.base.BaseEntity;
+import com.project.ychengspmall.model.entity.base.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Schema(description = "系统用户实体类")
 public class SysUser extends BaseEntity {

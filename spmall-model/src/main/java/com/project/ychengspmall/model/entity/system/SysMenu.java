@@ -1,11 +1,13 @@
 package com.project.ychengspmall.model.entity.system;
 
-import com.atguigu.spzx.model.entity.base.BaseEntity;
+import com.project.ychengspmall.model.entity.base.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Schema(description = "系统菜单实体类")
 @Data
 public class SysMenu extends BaseEntity {

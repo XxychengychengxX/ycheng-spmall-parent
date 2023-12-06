@@ -1,13 +1,18 @@
 package com.project.ychengspmall.model.entity.order;
 
-import com.atguigu.spzx.model.entity.base.BaseEntity;
+import com.project.ychengspmall.model.entity.base.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.io.Serial;
+
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Schema(description = "订单日志实体对象")
 public class OrderLog extends BaseEntity {
 
+   @Serial
    private static final long serialVersionUID = 1L;
 
    @Schema(description = "订单id")

@@ -1,12 +1,14 @@
 package com.project.ychengspmall.model.entity.product;
 
-import com.atguigu.spzx.model.entity.base.BaseEntity;
+import com.project.ychengspmall.model.entity.base.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Schema(description = "ProductSku")
 public class ProductSku extends BaseEntity {

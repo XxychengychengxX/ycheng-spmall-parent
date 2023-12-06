@@ -1,8 +1,10 @@
 package com.project.ychengspmall.model.entity.system;
 
-import com.atguigu.spzx.model.entity.base.BaseEntity;
+import com.project.ychengspmall.model.entity.base.BaseEntity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class SysRoleUser extends BaseEntity {
 

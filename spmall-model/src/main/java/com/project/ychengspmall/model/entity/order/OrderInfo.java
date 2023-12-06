@@ -1,17 +1,21 @@
 package com.project.ychengspmall.model.entity.order;
 
-import com.atguigu.spzx.model.entity.base.BaseEntity;
+import com.project.ychengspmall.model.entity.base.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.io.Serial;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Schema(description = "OrderInfo")
 public class OrderInfo extends BaseEntity {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	@Schema(description = "会员_id")

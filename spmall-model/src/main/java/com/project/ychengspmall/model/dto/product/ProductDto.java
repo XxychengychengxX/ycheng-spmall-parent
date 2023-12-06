@@ -1,9 +1,11 @@
 package com.project.ychengspmall.model.dto.product;
 
-import com.atguigu.spzx.model.entity.base.BaseEntity;
+import com.project.ychengspmall.model.entity.base.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Schema(description = "商品搜索条件实体类")
 public class ProductDto extends BaseEntity {
