@@ -22,7 +22,7 @@
         <mybatis-plus.version>3.4.0</mybatis-plus.version>
         <druid.starter.version>1.2.4</druid.starter.version>
         <swagger.version>3.0.0</swagger.version>
-        <hutool.version>5.3.9</hutool.version>
+        <hutool.version>5.8.0</hutool.version>
         <fastDFS.version>1.27.2</fastDFS.version>
         <fastJson.version>1.2.73</fastJson.version>
         <lombok.version>1.18.28</lombok.version>

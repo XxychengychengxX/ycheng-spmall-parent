@@ -16,6 +16,7 @@
         <module>spmall-common</module>
         <module>spmall-manager</module>
         <module>spmall-model</module>
+        <module>spmall-service</module>
     </modules>
 
     <properties>
@@ -30,6 +31,7 @@
         <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>
         <spring-cloud.version>2022.0.0</spring-cloud.version>
         <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
+        <alipay.version>4.35.79.ALL</alipay.version>
         <springdoc-openapi-webmvc.version>2.0.4</springdoc-openapi-webmvc.version>
     </properties>
 
@@ -37,6 +39,30 @@
     <dependencyManagement>
 
         <dependencies>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--导入支付宝支付sdk-->
+
+
+            <dependency>
+                <groupId>com.alipay.sdk</groupId>
+                <artifactId>alipay-sdk-java</artifactId>
+                <version>4.35.79.ALL</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>

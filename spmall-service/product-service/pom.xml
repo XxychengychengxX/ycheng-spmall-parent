@@ -5,30 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.project.ychengspmall</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>spmall-service</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spmall-common</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>common-util</module>
-        <module>common-service</module>
-        <module>common-log</module>
-    </modules>
+    <artifactId>product-service</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>5.8.20</version>
-        </dependency>
-    </dependencies>
 
 </project>
