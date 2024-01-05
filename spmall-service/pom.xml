@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>product-service</module>
+        <module>user-service</module>
     </modules>
     <artifactId>spmall-service</artifactId>
 

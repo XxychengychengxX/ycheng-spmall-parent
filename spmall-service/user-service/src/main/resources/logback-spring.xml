@@ -5,7 +5,7 @@
 
     <!-- 日志的输出目录 -->
     <property name="log.path"
-              value="D:\Java-project\Personal Project\ycheng-spmall-parent\spmall-service\product-service\logs"/>
+              value="D:\Java-project\Personal Project\ycheng-spmall-parent\spmall-service\user-service\logs"/>
 
     <!--控制台日志格式：彩色日志-->
     <!-- magenta:洋红 -->
@@ -17,7 +17,8 @@
               value="%yellow(%date{yyyy-MM-dd HH:mm:ss}) %highlight([%-5level]) %green(%logger) %msg%n"/>
 
     <!--文件日志格式-->
-    <property name="FILE_LOG_PATTERN" value="%date{yyyy-MM-dd HH:mm:ss} [%-5level] %thread %file:%line %logger %msg%n"/>
+    <property name="FILE_LOG_PATTERN"
+              value="%date{yyyy-MM-dd HH:mm:ss} [%-5level] %thread %file:%line %logger %msg%n"/>
 
     <!--编码-->
     <property name="ENCODING" value="UTF-8"/>

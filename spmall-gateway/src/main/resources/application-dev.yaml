@@ -1,0 +1,36 @@
+server:
+  port: 8500
+spring:
+  application:
+    name: spmall-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            # 允许请求中携带的头信息
+            allowedHeaders: "*"
+            # 运行跨域的请求方式
+            allowedMethods: "*"
+            # 跨域检测的有效期,单位s
+            maxAge: 36000
+      routes:
+        - id: product-service
+          uri: lb://service-product
+          predicates:
+            - Path=/*/product/**
+        - id: user-service
+          uri: lb://service-user
+          predicates:
+            - Path=/*/product/**
+  data:
+    redis:
+      port: 6381
+      host: 8.130.12.102
