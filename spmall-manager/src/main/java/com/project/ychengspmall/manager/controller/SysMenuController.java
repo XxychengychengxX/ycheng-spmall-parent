@@ -1,5 +1,6 @@
 package com.project.ychengspmall.manager.controller;
 
+import com.project.ychengspmall.common.service.exception.YchengException;
 import com.project.ychengspmall.manager.service.SysMenuService;
 import com.project.ychengspmall.manager.service.SysRoleMenuService;
 import com.project.ychengspmall.model.dto.system.AssginMenuDto;
@@ -44,7 +45,11 @@ public class SysMenuController {
 
     @DeleteMapping("/removeById/{id}")
     public Result removeById(@PathVariable Long id) {
-        sysMenuService.removeById(id);
+        try {
+            sysMenuService.removeById(id);
+        } catch (YchengException e) {
+            return Result.build(null, e.getResultCodeEnum().getCode(), e.getMessage());
+        }
         return Result.build(null, ResultCodeEnum.SUCCESS);
     }
 
@@ -56,11 +61,6 @@ public class SysMenuController {
 
     }
 
-    @PostMapping("/doAssign")
-    public Result doAssign(@RequestBody AssginMenuDto assginMenuDto) {
-        sysRoleMenuService.doAssign(assginMenuDto);
-        return Result.build(null, ResultCodeEnum.SUCCESS);
-    }
 
     @GetMapping("/menus")
     public Result menus() {

@@ -9,7 +9,7 @@ import com.project.ychengspmall.model.vo.common.ResultCodeEnum;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.context.annotation.Configuration;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -22,10 +22,10 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class AuthContextInterceptor implements HandlerInterceptor {
     @Resource
-    StringRedisTemplate redisTemplate;
+    StringRedisTemplate stringRedisTemplate;
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object handler) throws Exception {
         // 获取请求方式
         String method = request.getMethod();
         if("OPTIONS".equals(method)) {      // 如果是跨域预检请求，直接放行
@@ -40,7 +40,7 @@ public class AuthContextInterceptor implements HandlerInterceptor {
         }
 
         // 如果token不为空，那么此时验证token的合法性
-        String sysUserInfoJson = redisTemplate.opsForValue().get("user:login:" + token);
+        String sysUserInfoJson = stringRedisTemplate.opsForValue().get("user:login:" + token);
         if(StrUtil.isEmpty(sysUserInfoJson)) {
             responseNoLoginInfo(response) ;
             return false ;
@@ -51,7 +51,7 @@ public class AuthContextInterceptor implements HandlerInterceptor {
         AuthContextUtil.set(sysUser);
 
         // 重置Redis中的用户数据的有效时间
-        redisTemplate.expire("user:login:" + token , 30 , TimeUnit.MINUTES) ;
+        stringRedisTemplate.expire("user:login:" + token , 30 , TimeUnit.MINUTES) ;
 
         // 放行
         return true ;

@@ -2,8 +2,6 @@ package com.project.ychengspmall.manager.service.impl;
 
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.project.ychengspmall.common.service.exception.YchengException;
@@ -14,7 +12,6 @@ import com.project.ychengspmall.model.dto.system.AssignRoleDto;
 import com.project.ychengspmall.model.dto.system.LoginDto;
 import com.project.ychengspmall.model.dto.system.SysUserDto;
 import com.project.ychengspmall.model.entity.system.SysUser;
-import com.project.ychengspmall.model.entity.user.UserInfo;
 import com.project.ychengspmall.model.vo.common.ResultCodeEnum;
 import com.project.ychengspmall.model.vo.system.LoginVo;
 import jakarta.annotation.Resource;
@@ -28,11 +25,11 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, UserInfo> implements SysUserService {
+public class SysUserServiceImpl implements SysUserService {
     @Resource
     SysUserMapper sysUserMapper;
     @Resource
-    StringRedisTemplate redisTemplate;
+    StringRedisTemplate stringRedisTemplate;
     @Resource
     SysRoleUserMapper sysRoleUserMapper;
 
@@ -87,14 +84,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, UserInfo> imp
 
     @Override
     public void logout(String token) {
-        redisTemplate.delete("user:login:" + token);
+        stringRedisTemplate.delete("user:login:" + token);
 
     }
 
     @Override
     public SysUser getUserInfo(String token) {
-        String s = redisTemplate.opsForValue().get(token);
-        return JSON.parseObject(s, SysUser.class);
+        String userJson = stringRedisTemplate.opsForValue().get("user:login:" + token);
+        return JSON.parseObject(userJson, SysUser.class);
     }
 
     @Override
@@ -104,17 +101,17 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, UserInfo> imp
         String codeKey = loginDto.getCodeKey();     // redis中验证码的数据key
 
         // 从Redis中获取验证码
-        String redisCode = redisTemplate.opsForValue().get("user:login:validatecode:" + codeKey);
+        String redisCode = stringRedisTemplate.opsForValue()
+                .get("user:login:validatecode:" + codeKey);
         if (StrUtil.isEmpty(redisCode) || !StrUtil.equalsIgnoreCase(redisCode, captcha)) {
             throw new YchengException(ResultCodeEnum.VALIDATECODE_ERROR);
         }
 
         // 验证通过删除redis中的验证码
-        redisTemplate.delete("user:login:validatecode:" + codeKey);
+        stringRedisTemplate.delete("user:login:validatecode:" + codeKey);
 
         // 根据用户名查询用户
-        QueryWrapper<UserInfo> query = new QueryWrapper<UserInfo>().eq("username", loginDto.getUserName());
-        UserInfo userInfo = sysUserMapper.selectOne(query);
+        SysUser userInfo = sysUserMapper.findByUserName(loginDto.getUserName());
         if (userInfo == null) {
             throw new RuntimeException("用户名或者密码错误");
         }
@@ -128,7 +125,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, UserInfo> imp
 
         // 生成令牌，保存数据到Redis
         String token = UUID.randomUUID().toString().replace("-", "");
-        redisTemplate.opsForValue().set("user:login:" + token, JSON.toJSONString(userInfo), 30, TimeUnit.MINUTES);
+        stringRedisTemplate.opsForValue()
+                .set("user:login:" + token, JSON.toJSONString(userInfo), 30, TimeUnit.MINUTES);
 
         // 构建响应结果对象
         LoginVo loginVo = new LoginVo();

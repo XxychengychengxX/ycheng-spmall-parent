@@ -1,15 +1,13 @@
 package com.project.ychengspmall.manager.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.project.ychengspmall.model.dto.system.SysUserDto;
 import com.project.ychengspmall.model.entity.system.SysUser;
-import com.project.ychengspmall.model.entity.user.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
-public interface SysUserMapper extends BaseMapper<UserInfo> {
+public interface SysUserMapper {
     List<SysUser> findByPage(SysUserDto sysUserDto);
 
     SysUser findByUserName(String userName);

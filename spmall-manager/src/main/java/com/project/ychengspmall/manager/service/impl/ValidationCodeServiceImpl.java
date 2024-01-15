@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class ValidationCodeServiceImpl implements ValidationCodeService {
     @Resource
-    StringRedisTemplate redisTemplate;
+    StringRedisTemplate stringRedisTemplate;
 
     @Override
     public ValidateCodeVo generateValidateCode() {
@@ -29,7 +29,7 @@ public class ValidationCodeServiceImpl implements ValidationCodeService {
         String codeKey = UUID.randomUUID().toString().replace("-", "");
 
         // 将验证码存储到Redis中
-        redisTemplate.opsForValue().set("user:login:validatecode:" + codeKey, codeValue, 5, TimeUnit.MINUTES);
+        stringRedisTemplate.opsForValue().set("user:login:validatecode:" + codeKey, codeValue, 5, TimeUnit.MINUTES);
 
         // 构建响应结果数据
         ValidateCodeVo validateCodeVo = new ValidateCodeVo();

@@ -1,6 +1,5 @@
 package com.project.ychengspmall.manager.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.project.ychengspmall.model.dto.system.SysRoleDto;
 import com.project.ychengspmall.model.entity.system.SysRole;
 import org.apache.ibatis.annotations.Mapper;
@@ -8,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 @Mapper
-public interface SysRoleMapper extends BaseMapper<SysRole> {
+public interface SysRoleMapper  {
 
     List<SysRole> findByPage(SysRoleDto sysRoleDto);
 

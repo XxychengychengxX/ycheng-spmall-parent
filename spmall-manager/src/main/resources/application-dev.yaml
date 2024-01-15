@@ -14,7 +14,7 @@ spring:
   data:
     redis:
       host: 8.130.12.102
-      port: 6379
+      port: 6381
   cache:
     type: redis
 #  password: 1234
@@ -22,24 +22,21 @@ spring:
 # mybatis的配置
 mybatis:
   config-location: classpath:/mybatis-config.xml
-  mapper-locations: classpath:/mapper/*/*.xml
-mybatis-plus:
-  config-location: classpath:/mybatis-config.xml
-  mapper-locations: classpath:/mapper/*/*.xml
-  configuration:
-    cache-enabled: true
+  mapper-locations: classpath:/mapper/*.xml
+    #configuration:
+  # cache-enabled: true
 
 spmall:
   auth:
-    noConfirmUrls:
+    no-confirm-urls:
       - /admin/system/index/login
-      - /admin/system/index/getValidateCode
+      - /admin/system/index/generateValidateCode
       - /admin/system/index/logout
   minio:
     endpointUrl: http://8.130.12.102:9000
     accessKey: minioadmin
     secretKey: admin121148
-    bucketName: nicego-bucket
+    bucketName: spmall-bucket
 
 
 sa-token:

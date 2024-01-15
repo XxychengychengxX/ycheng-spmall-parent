@@ -1,6 +1,5 @@
 package com.project.ychengspmall.manager.service.impl;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.project.ychengspmall.manager.mapper.SysRoleMapper;
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> implements SysRoleService {
+public class SysRoleServiceImpl  implements SysRoleService {
     @Resource
     private SysRoleMapper sysRoleMapper;
 
@@ -46,9 +45,9 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
 
     @Override
     public Map<String, Object> findAllRoles() {
-        List<SysRole> sysRoleList = sysRoleMapper.findAllRoles() ;
-        Map<String , Object> resultMap = new HashMap<>() ;
-        resultMap.put("allRolesList" , sysRoleList) ;
+        List<SysRole> sysRoleList = sysRoleMapper.findAllRoles();
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("allRolesList", sysRoleList);
         return resultMap;
     }
 

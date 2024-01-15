@@ -1,13 +1,12 @@
 package com.project.ychengspmall.manager.service.impl;
 
-import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import cn.hutool.core.collection.CollectionUtil;
 import com.project.ychengspmall.common.service.exception.YchengException;
 import com.project.ychengspmall.common.util.AuthContextUtil;
 import com.project.ychengspmall.manager.helper.MenuHelper;
 import com.project.ychengspmall.manager.mapper.SysMenuMapper;
 import com.project.ychengspmall.manager.mapper.SysRoleMenuMapper;
 import com.project.ychengspmall.manager.service.SysMenuService;
-import com.project.ychengspmall.manager.service.SysRoleMenuService;
 import com.project.ychengspmall.model.entity.system.SysMenu;
 import com.project.ychengspmall.model.entity.system.SysUser;
 import com.project.ychengspmall.model.vo.common.ResultCodeEnum;
@@ -32,9 +31,9 @@ public class SysMenuServiceImpl implements SysMenuService {
     @Override
     public List<SysMenu> findNodes() {
         List<SysMenu> sysMenuList = sysMenuMapper.selectAll();
-        if (CollectionUtils.isEmpty(sysMenuList)) return null;
-        List<SysMenu> treeList = MenuHelper.buildTree(sysMenuList); //构建树形数据
-        return treeList;
+        if (CollectionUtil.isEmpty(sysMenuList)) return null;
+        return MenuHelper.buildTree(sysMenuList);
+
     }
 
     @Override
@@ -82,6 +81,7 @@ public class SysMenuServiceImpl implements SysMenuService {
         SysUser sysUser = AuthContextUtil.get();
         Long userId = sysUser.getId();          // 获取当前登录用户的id
 
+        //直接根据userId查出当前角色的所有树
         List<SysMenu> sysMenuList = sysMenuMapper.selectListByUserId(userId);
 
         //构建树形数据
@@ -92,13 +92,13 @@ public class SysMenuServiceImpl implements SysMenuService {
     // 将List<SysMenu>对象转换成List<SysMenuVo>对象
     private List<SysMenuVo> buildMenus(List<SysMenu> menus) {
 
-        List<SysMenuVo> sysMenuVoList = new LinkedList<SysMenuVo>();
+        List<SysMenuVo> sysMenuVoList = new LinkedList<>();
         for (SysMenu sysMenu : menus) {
             SysMenuVo sysMenuVo = new SysMenuVo();
             sysMenuVo.setTitle(sysMenu.getTitle());
             sysMenuVo.setName(sysMenu.getComponent());
             List<SysMenu> children = sysMenu.getChildren();
-            if (!CollectionUtils.isEmpty(children)) {
+            if (!CollectionUtil.isEmpty(children)) {
                 sysMenuVo.setChildren(buildMenus(children));
             }
             sysMenuVoList.add(sysMenuVo);

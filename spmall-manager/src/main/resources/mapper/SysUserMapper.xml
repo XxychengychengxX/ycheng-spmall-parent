@@ -66,9 +66,10 @@
     </insert>
 
 
+
     <!-- 用于select查询公用抽取的列 -->
     <sql id="columns">
-        id,role_name,role_code,description,create_time,update_time,is_deleted
+        id,username userName ,password,name,phone,avatar,description,status,create_time,update_time,is_deleted
     </sql>
 
     <sql id="findPageWhere">

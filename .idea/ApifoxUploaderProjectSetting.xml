@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ApifoxUploaderProjectSetting">
     <option name="apifoxAccessToken" value="APS-4WeExfszlQlAjcW8fowmn7HbbsOCt6zL " />
-    <option name="apifoxApiOverwriteMode" value="智能合并" />
     <option name="apifoxProjectIds">
       <array>
         <option value="# ModuleName:ProjectID" />
-        <option value="spmall-manager:3687860,管理后台" />
+        <option value="spmall-manager:3864679,管理后台" />
       </array>
     </option>
     <option name="yapiTokens" value="" />

@@ -1,16 +1,14 @@
 package com.project.ychengspmall.manager.service;
 
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
 import com.project.ychengspmall.model.dto.system.AssignRoleDto;
 import com.project.ychengspmall.model.dto.system.LoginDto;
 import com.project.ychengspmall.model.dto.system.SysUserDto;
 import com.project.ychengspmall.model.entity.system.SysUser;
-import com.project.ychengspmall.model.entity.user.UserInfo;
 import com.project.ychengspmall.model.vo.system.LoginVo;
 
-public interface SysUserService extends IService<UserInfo> {
+public interface SysUserService {
     /**
      * 用户登录
      *

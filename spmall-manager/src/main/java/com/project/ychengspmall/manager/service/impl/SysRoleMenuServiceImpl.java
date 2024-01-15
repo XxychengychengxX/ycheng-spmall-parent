@@ -43,10 +43,10 @@ public class SysRoleMenuServiceImpl implements SysRoleMenuService {
     @Override
     public void doAssign(AssginMenuDto assginMenuDto) {
 
-        // 根据角色的id删除其所对应的菜单数据
+        // 1.根据角色的id删除其所对应的菜单数据
         sysRoleMenuMapper.deleteByRoleId(assginMenuDto.getRoleId());
 
-        // 获取菜单的id
+        // 2.获取菜单的id再进行重新插入
         List<Map<String, Number>> menuInfo = assginMenuDto.getMenuIdList();
         if (menuInfo != null && !menuInfo.isEmpty()) {
             sysRoleMenuMapper.doAssign(assginMenuDto);
