@@ -9,7 +9,7 @@ import java.util.List;
 public interface BrandMapper {
     List<Brand> findByPage();
 
-    void save(Brand brand);
+    Integer save(Brand brand);
 
     void updateById(Brand brand);
 

@@ -17,7 +17,6 @@ import java.util.List;
 @Slf4j
 @RequestMapping(value = "/admin/product/category-brand")
 public class CategoryBrandController {
-    // com.atguigu.spzx.manager.controller
     @Resource
     CategoryBrandService categoryBrandService;
     @GetMapping("/findBrandByCategoryId/{categoryId}")
@@ -40,7 +39,7 @@ public class CategoryBrandController {
         return Result.build(null , ResultCodeEnum.SUCCESS) ;
     }
 
-    @PutMapping("updateById")
+    @PutMapping("/updateById")
     public Result updateById(@RequestBody CategoryBrand categoryBrand) {
         categoryBrandService.updateById(categoryBrand);
         return Result.build(null , ResultCodeEnum.SUCCESS) ;

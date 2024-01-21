@@ -21,6 +21,9 @@ public class OrderStatisticTask {
     @Resource
     private OrderStatisticsMapper orderStatisticsMapper;
 
+    /**
+     * 每天凌晨2点执行一次
+     */
     @Scheduled(cron = "0 0 2 * * ?")
     public void orderTotalAmountStatistics() {
         String createTime = DateUtil.offsetDay(new Date(), -1)

@@ -28,7 +28,6 @@ public class ProductController {
         return Result.build(null, ResultCodeEnum.SUCCESS);
     }
 
-    // com.atguigu.spzx.manager.controller;
     @GetMapping("/getById/{id}")
     public Result<Product> getById(@PathVariable Long id) {
         Product product = productService.getById(id);

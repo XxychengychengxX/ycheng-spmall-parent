@@ -1,5 +1,6 @@
 package com.project.ychengspmall.manager.controller;
 
+import cn.hutool.core.collection.CollUtil;
 import com.github.pagehelper.PageInfo;
 import com.project.ychengspmall.manager.service.ProductSpecService;
 import com.project.ychengspmall.model.entity.product.ProductSpec;
@@ -16,10 +17,13 @@ public class ProductSpecController {
     @Resource
     ProductSpecService productSpecService;
 
-    @GetMapping("findAll")
+    @GetMapping("/findAll")
     public Result findAll() {
         List<ProductSpec> list = productSpecService.findAll();
-        return Result.build(list, ResultCodeEnum.SUCCESS);
+        if (CollUtil.isNotEmpty(list)){
+            return Result.build(list, ResultCodeEnum.SUCCESS);
+        }
+        return Result.build(null, ResultCodeEnum.ERROR_BUSINESS);
     }
 
 
@@ -29,13 +33,13 @@ public class ProductSpecController {
         return Result.build(pageInfo, ResultCodeEnum.SUCCESS);
     }
 
-    @PostMapping("save")
+    @PostMapping("/save")
     public Result save(@RequestBody ProductSpec productSpec) {
         productSpecService.save(productSpec);
         return Result.build(null, ResultCodeEnum.SUCCESS);
     }
 
-    @PutMapping("updateById")
+    @PutMapping("/updateById")
     public Result updateById(@RequestBody ProductSpec productSpec) {
         productSpecService.updateById(productSpec);
         return Result.build(null, ResultCodeEnum.SUCCESS);

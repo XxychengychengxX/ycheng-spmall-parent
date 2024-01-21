@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author admin
+ */
 @Service
 @Slf4j
 public class BrandServiceImpl implements BrandService {
@@ -25,8 +28,9 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public void save(Brand brand) {
-        brandMapper.save(brand) ;
+    public Integer save(Brand brand) {
+        Integer save = brandMapper.save(brand);
+        return save;
     }
 
     @Override

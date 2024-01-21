@@ -1,6 +1,7 @@
 package com.project.ychengspmall.manager.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.project.ychengspmall.common.log.annotation.Log;
 import com.project.ychengspmall.manager.service.SysUserService;
 import com.project.ychengspmall.model.dto.system.AssignRoleDto;
 import com.project.ychengspmall.model.dto.system.SysUserDto;
@@ -28,6 +29,7 @@ public class SysUserController {
     }
 
     @PostMapping(value = "/saveSysUser")
+    @Log(title = "新增用户",businessType = 0)
     public Result saveSysUser(@RequestBody SysUser sysUser) {
         sysUserService.saveSysUser(sysUser) ;
         return Result.build(null , ResultCodeEnum.SUCCESS) ;

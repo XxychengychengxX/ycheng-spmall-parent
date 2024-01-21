@@ -14,9 +14,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
+/**
+ * @author admin
+ */
 public class LogUtils {
     //操作执行之后调用
-    public static void afterHandlLog(Log sysLog, Object proceed,
+    public static void afterHandleLog(Log sysLog, Object proceed,
                                      SysOperLog sysOperLog, int status ,
                                      String errorMsg) {
         if(sysLog.isSaveResponseData()) {

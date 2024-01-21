@@ -25,13 +25,11 @@ public class CategoryController {
         return Result.build(list, ResultCodeEnum.SUCCESS);
     }
 
-    // com.atguigu.spzx.manager.controller#CategoryController
     @GetMapping(value = "/exportData")
     public void exportData(HttpServletResponse response) {
         categoryService.exportData(response);
     }
 
-    // com.atguigu.spzx.manager.controller#CategoryController
     @PostMapping("importData")
     public Result importData(MultipartFile file) {
         categoryService.importData(file);

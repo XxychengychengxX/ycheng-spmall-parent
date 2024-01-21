@@ -6,7 +6,7 @@
                autoMapping="true"/>
 
     <sql id="columns">
-        id,name,create_time,update_time,is_deleted
+        id,spec_name,spec_value,create_time,update_time,is_deleted
     </sql>
     <insert id="save">
         insert into product_spec (id,
@@ -42,13 +42,7 @@
         where id = #{id}
     </update>
 
-    <select id="findAll" resultMap="productUnitMap">
-        select
-        <include refid="columns"/>
-        from product_unit
-        where is_deleted = 0
-        order by id
-    </select>
+
 
     <select id="findByPage"
             resultType="com.project.ychengspmall.model.entity.product.ProductSpec">
@@ -56,6 +50,12 @@
         <include refid="columns"/>
         from product_spec
         where is_deleted = 0
+        order by id desc
+    </select>
+
+    <select id="findAll" resultType="com.project.ychengspmall.model.entity.product.ProductSpec">
+        select <include refid="columns" />
+        from product_spec
         order by id desc
     </select>
 </mapper>

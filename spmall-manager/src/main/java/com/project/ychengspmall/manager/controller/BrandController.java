@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * 商品品牌接口
+ * @author admin
  */
 @RestController
 @RequestMapping(value = "/admin/product/brand")
@@ -28,21 +29,22 @@ public class BrandController {
         return Result.build(pageInfo, ResultCodeEnum.SUCCESS);
     }
 
-    // com.atguigu.spzx.manager.controller
-    @PostMapping("save")
+    @PostMapping("/save")
     public Result save(@RequestBody Brand brand) {
-        brandService.save(brand);
-        return Result.build(null, ResultCodeEnum.SUCCESS);
+        Integer save = brandService.save(brand);
+        if (save == 0) {
+            return Result.build(null, ResultCodeEnum.ERROR_BUSINESS);
+        }else {
+            return Result.build(null, ResultCodeEnum.SUCCESS);
+        }
     }
 
-    // com.atguigu.spzx.manager.controller
-    @PutMapping("updateById")
+    @PutMapping("/updateById")
     public Result updateById(@RequestBody Brand brand) {
         brandService.updateById(brand);
         return Result.build(null, ResultCodeEnum.SUCCESS);
     }
 
-    // com.atguigu.spzx.manager.controller
     @DeleteMapping("/deleteById/{id}")
     public Result deleteById(@PathVariable Long id) {
         brandService.deleteById(id);

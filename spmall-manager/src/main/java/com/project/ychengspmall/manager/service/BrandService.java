@@ -8,7 +8,7 @@ import java.util.List;
 public interface BrandService {
     PageInfo<Brand> findByPage(Integer page, Integer limit);
 
-    void save(Brand brand);
+    Integer save(Brand brand);
 
     void updateById(Brand brand);
 

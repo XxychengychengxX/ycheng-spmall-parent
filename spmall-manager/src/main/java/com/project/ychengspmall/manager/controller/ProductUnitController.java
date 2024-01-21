@@ -17,7 +17,7 @@ public class ProductUnitController {
     @Resource
     private ProductUnitService productUnitService;
 
-    @GetMapping("findAll")
+    @GetMapping("/findAll")
     public Result<List<ProductUnit>> findAll() {
         List<ProductUnit> productUnitList = productUnitService.findAll();
         return Result.build(productUnitList, ResultCodeEnum.SUCCESS);
