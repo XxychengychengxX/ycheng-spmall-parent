@@ -6,7 +6,9 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 8.130.12.102:8848
+        username: nacos
+        password: nacos
     gateway:
       discovery:
         locator:
@@ -29,7 +31,15 @@ spring:
         - id: user-service
           uri: lb://service-user
           predicates:
-            - Path=/*/product/**
+            - Path=/*/user/**
+        - id: service-cart
+          uri: lb://service-cart
+          predicates:
+            - Path=/api/order/cart/**
+        - id: service-order
+          uri: lb://service-order
+          predicates:
+            - Path=/api/order/orderInfo/**
   data:
     redis:
       port: 6381

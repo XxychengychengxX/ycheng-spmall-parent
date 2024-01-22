@@ -18,6 +18,7 @@
         <module>spmall-model</module>
         <module>spmall-service</module>
         <module>spmall-gateway</module>
+        <module>spmall-service-client</module>
     </modules>
 
     <properties>

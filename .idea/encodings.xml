@@ -16,6 +16,12 @@
     <file url="file://$PROJECT_DIR$/spmall-manager/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spmall-model/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spmall-model/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spmall-service-client/service-client-cart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spmall-service-client/service-client-product/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spmall-service-client/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spmall-service-client/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spmall-service/cart-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spmall-service/order-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spmall-service/product-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spmall-service/product-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spmall-service/src/main/java" charset="UTF-8" />

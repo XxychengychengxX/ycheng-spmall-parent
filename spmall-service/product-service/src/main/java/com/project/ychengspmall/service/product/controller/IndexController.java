@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Tag(name = "首页接口管理")
+/**
+ * 首页接口
+ * @author admin
+ */
 @RestController
 @RequestMapping(value = "/api/product/index")
-@SuppressWarnings({"unchecked", "rawtypes"})
+@SuppressWarnings({"unchecked"})
 public class IndexController {
 
     @Resource
@@ -28,7 +31,10 @@ public class IndexController {
     @Resource
     private ProductService productService;
 
-    @Operation(summary = "获取首页数据")
+    /**
+     * 获取首页数据
+     * @return 返回首页数据
+     */
     @GetMapping
     public Result<IndexVo> findData() {
         List<Category> categoryList = categoryService.findOneCategory();

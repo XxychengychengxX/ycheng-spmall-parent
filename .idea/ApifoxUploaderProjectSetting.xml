@@ -6,6 +6,8 @@
       <array>
         <option value="# ModuleName:ProjectID" />
         <option value="spmall-manager:3864679,管理后台" />
+        <option value="product-service:3864679,前端系统/商品接口" />
+        <option value="user-service:3864679,前端系统/用户接口" />
       </array>
     </option>
     <option name="yapiTokens" value="" />

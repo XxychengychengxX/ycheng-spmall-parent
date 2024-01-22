@@ -50,6 +50,12 @@ public class AuthGlobalFilter implements GlobalFilter, Order {
         return chain.filter(exchange);
     }
 
+    /**
+     * 用户未登录的输出
+     * @param response
+     * @param resultCodeEnum
+     * @return
+     */
     private Mono<Void> out(ServerHttpResponse response, ResultCodeEnum resultCodeEnum) {
         Result result = Result.build(null, resultCodeEnum);
         byte[] bits = JSONObject.toJSONString(result).getBytes(StandardCharsets.UTF_8);
@@ -57,9 +63,13 @@ public class AuthGlobalFilter implements GlobalFilter, Order {
         //指定编码，否则在浏览器中会中文乱码
         response.getHeaders().add("Content-Type", "application/json;charset=UTF-8");
         return response.writeWith(Mono.just(buffer));
-
     }
 
+    /**
+     * 根据请求头中的token参数获取信息
+     * @param request 请求
+     * @return
+     */
     private UserInfo getUserInfo(ServerHttpRequest request) {
         String token = "";
         List<String> tokenList = request.getHeaders().get("token");

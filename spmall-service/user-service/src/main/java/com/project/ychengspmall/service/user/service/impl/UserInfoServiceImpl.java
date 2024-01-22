@@ -121,6 +121,8 @@ public class UserInfoServiceImpl implements UserInfoService {
         UserInfoVo userInfoVo = new UserInfoVo();
         BeanUtils.copyProperties(userInfo, userInfoVo);
         return userInfoVo;*/
+
+        //直接从AuthContextUtil中获取对应的userInfo
         UserInfo userInfo = AuthContextUtil.getUserInfo();
         UserInfoVo userInfoVo = new UserInfoVo();
         BeanUtils.copyProperties(userInfo, userInfoVo);

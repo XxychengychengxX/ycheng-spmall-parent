@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Tag(name = "分类接口管理")
+/**
+ * 分类接口
+ */
 @RestController
 @RequestMapping(value="/api/product/category")
 @SuppressWarnings({"unchecked", "rawtypes"})
@@ -22,7 +24,10 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @Operation(summary = "获取分类树形数据")
+    /**
+     * 获取分类树形数据
+     * @return 返回分类树形数据
+     */
     @GetMapping("findCategoryTree")
     public Result<List<Category>> findCategoryTree(){
         List<Category> list = categoryService.findCategoryTree();

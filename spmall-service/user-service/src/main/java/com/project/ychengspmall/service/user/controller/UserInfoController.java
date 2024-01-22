@@ -12,7 +12,9 @@ import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.*;
 
-@Tag(name = "会员用户接口")
+/**
+ * 用户接口
+ */
 @RestController
 @RequestMapping("api/user/userInfo")
 public class UserInfoController {
@@ -20,19 +22,32 @@ public class UserInfoController {
     @Resource
     UserInfoService userInfoService;
 
-    @Operation(summary = "会员注册")
+    /**
+     * 会员注册
+     * @param userRegisterDto
+     * @return
+     */
     @PostMapping("/register")
     public Result register(@RequestBody UserRegisterDto userRegisterDto) {
         userInfoService.register(userRegisterDto);
         return Result.build(null , ResultCodeEnum.SUCCESS) ;
     }
 
-    @Operation(summary = "会员登录")
+    /**
+     * 会员登录
+     * @param userLoginDto
+     * @return
+     */
     @PostMapping("/login")
     public Result login(@RequestBody UserLoginDto userLoginDto) {
         return Result.build(userInfoService.login(userLoginDto), ResultCodeEnum.SUCCESS);
     }
-    @Operation(summary = "获取当前登录用户信息")
+
+    /**
+     * 获取当前登录用户信息
+     * @param request
+     * @return
+     */
     @GetMapping("auth/getCurrentUserInfo")
     public Result<UserInfoVo> getCurrentUserInfo(HttpServletRequest request) {
         String token = request.getHeader("token");

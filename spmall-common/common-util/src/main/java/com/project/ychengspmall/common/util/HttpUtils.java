@@ -86,7 +86,7 @@ public class HttpUtils {
         if (null != querys) {
             StringBuilder sbQuery = new StringBuilder();
             for (Map.Entry<String, String> query : querys.entrySet()) {
-                if (0 < sbQuery.length()) {
+                if (!sbQuery.isEmpty()) {
                     sbQuery.append("&");
                 }
                 if (StrUtil.isBlank(query.getKey()) && !StrUtil.isBlank(query.getValue())) {
@@ -96,11 +96,11 @@ public class HttpUtils {
                     sbQuery.append(query.getKey());
                     if (!StrUtil.isBlank(query.getValue())) {
                         sbQuery.append("=");
-                        sbQuery.append(URLEncoder.encode(query.getValue(), "utf-8"));
+                        sbQuery.append(URLEncoder.encode(query.getValue(), StandardCharsets.UTF_8));
                     }
                 }
             }
-            if (0 < sbQuery.length()) {
+            if (!sbQuery.isEmpty()) {
                 sbUrl.append("?").append(sbQuery);
             }
         }
@@ -110,13 +110,13 @@ public class HttpUtils {
 
     /**
      *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param bodys
-     * @return
+     * @param host 主机
+     * @param path 路径
+     * @param method 请求方法
+     * @param headers 请求头
+     * @param querys 请求参数
+     * @param bodys 请求体
+     * @return http response
      * @throws Exception
      */
     public HttpResponse doPost(String host, String path, String method,
@@ -146,15 +146,14 @@ public class HttpUtils {
     }
 
     /**
-     * Post String
      *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param body
-     * @return
+     * @param host 主机
+     * @param path 路径
+     * @param method 请求方法
+     * @param headers 请求头
+     * @param querys 请求参数
+     * @param bodys 请求体
+     * @return http response
      * @throws Exception
      */
     public HttpResponse doPost(String host, String path, String method,
@@ -301,15 +300,14 @@ public class HttpUtils {
     }
 
     /**
-     * Post stream
      *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param body
-     * @return
+     * @param host 主机
+     * @param path 路径
+     * @param method 请求方法
+     * @param headers 请求头
+     * @param querys 请求参数
+     * @param bodys 请求体
+     * @return http response
      * @throws Exception
      */
     public HttpResponse doPost(String host, String path, String method,
@@ -332,14 +330,14 @@ public class HttpUtils {
 
 
     /**
-     * Put stream
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @param body
-     * @return
+     *
+     * @param host 主机
+     * @param path 路径
+     * @param method 请求方法
+     * @param headers 请求头
+     * @param querys 请求参数
+     * @param bodys 请求体
+     * @return http response
      * @throws Exception
      */
     public HttpResponse doPut(String host, String path, String method,
@@ -362,14 +360,13 @@ public class HttpUtils {
 
 
     /**
-     * Delete
      *
-     * @param host
-     * @param path
-     * @param method
-     * @param headers
-     * @param querys
-     * @return
+     * @param host 主机
+     * @param path 路径
+     * @param method 请求方法
+     * @param headers 请求头
+     * @param querys 请求参数
+     * @return http response
      * @throws Exception
      */
     public HttpResponse doDelete(String host, String path, String method,

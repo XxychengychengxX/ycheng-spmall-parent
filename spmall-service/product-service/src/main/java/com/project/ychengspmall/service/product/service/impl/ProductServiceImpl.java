@@ -21,6 +21,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author admin
+ */
 @Service
 @Slf4j
 public class ProductServiceImpl implements ProductService {
@@ -74,5 +77,10 @@ public class ProductServiceImpl implements ProductService {
         productItemVo.setSpecValueList(JSON.parseArray(product.getSpecValue()));
         productItemVo.setSkuSpecValueMap(skuSpecValueMap);
         return productItemVo;
+    }
+
+    @Override
+    public ProductSku getBySkuId(Long skuId) {
+        return productSkuMapper.getById(skuId);
     }
 }
