@@ -5,50 +5,28 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.project.ychengspmall</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>spmall-service</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spmall-service-client</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>service-client-product</module>
-        <module>service-client-cart</module>
-        <module>service-client-user</module>
-    </modules>
+    <artifactId>service-order</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <dependencies>
-
         <dependency>
             <groupId>com.project.ychengspmall</groupId>
-            <artifactId>common-util</artifactId>
+            <artifactId>service-client-cart</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>provided </scope>
         </dependency>
-
         <dependency>
             <groupId>com.project.ychengspmall</groupId>
-            <artifactId>spmall-model</artifactId>
+            <artifactId>service-client-user</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>provided </scope>
         </dependency>
-
-        <!-- openfeign依赖 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-
-        <!-- loadbalancer依赖 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-loadbalancer</artifactId>
-        </dependency>
-
     </dependencies>
 </project>
