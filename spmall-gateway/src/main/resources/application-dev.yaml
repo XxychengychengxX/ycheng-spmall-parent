@@ -6,9 +6,10 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 8.130.12.102:8848
+        server-addr: localhost:8848
         username: nacos
         password: nacos
+        namespace: e296748c-84fa-4cf9-a941-3cde0a44e8d5
     gateway:
       discovery:
         locator:
@@ -28,7 +29,7 @@ spring:
           uri: lb://service-product
           predicates:
             - Path=/*/product/**
-        - id: user-service
+        - id: service-user
           uri: lb://service-user
           predicates:
             - Path=/*/user/**
@@ -40,6 +41,17 @@ spring:
           uri: lb://service-order
           predicates:
             - Path=/api/order/orderInfo/**
+        - id: service-pay
+          uri: lb://service-pay
+          predicates:
+            - Path=/api/order/alipay/**
+    sentinel:
+      log:
+        dir: E:\Java Project\Personal\ycheng-spmall-parent\spmall-gateway\log
+    loadbalancer:
+      cache:
+        enabled: false
+
   data:
     redis:
       port: 6381

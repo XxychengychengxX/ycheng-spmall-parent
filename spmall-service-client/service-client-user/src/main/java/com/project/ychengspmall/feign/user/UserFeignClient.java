@@ -1,4 +1,4 @@
-package com.project.ychengspmall.feign;
+package com.project.ychengspmall.feign.user;
 
 import com.project.ychengspmall.model.entity.user.UserAddress;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -14,5 +14,7 @@ public interface UserFeignClient {
 
     @GetMapping("/api/user/userAddress/getUserAddress/{id}")
     public abstract UserAddress getUserAddress(@PathVariable Long id);
+
+
 
 }

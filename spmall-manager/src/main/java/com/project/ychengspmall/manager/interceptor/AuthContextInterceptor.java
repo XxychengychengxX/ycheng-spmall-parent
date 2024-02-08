@@ -19,6 +19,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author XxychengychengxX
+ */
 @Component
 public class AuthContextInterceptor implements HandlerInterceptor {
     @Resource
@@ -28,7 +31,8 @@ public class AuthContextInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Object handler) throws Exception {
         // 获取请求方式
         String method = request.getMethod();
-        if("OPTIONS".equals(method)) {      // 如果是跨域预检请求，直接放行
+        // 如果是跨域预检请求，直接放行
+        if("OPTIONS".equals(method)) {
             return true ;
         }
 

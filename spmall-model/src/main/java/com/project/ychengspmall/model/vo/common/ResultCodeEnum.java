@@ -16,12 +16,11 @@ public enum ResultCodeEnum {
     ACCOUNT_STOP( 216, "账号已停用"),
     ERROR_BUSINESS(210 , "业务错误"),
 
-    STOCK_LESS( 219, "库存不足"),
-
-    ;
-
-    private Integer code ;      // 业务状态码
-    private String message ;    // 响应消息
+    STOCK_LESS( 219, "库存不足");
+    // 业务状态码
+    private Integer code ;
+    // 响应消息
+    private String message ;
 
     private ResultCodeEnum(Integer code , String message) {
         this.code = code ;

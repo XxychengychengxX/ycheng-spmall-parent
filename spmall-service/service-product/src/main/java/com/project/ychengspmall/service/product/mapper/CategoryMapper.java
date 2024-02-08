@@ -5,6 +5,10 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+/**
+ * @author XxychengychengxX
+ * @date 2024/02/01
+ */
 @Mapper
 public interface CategoryMapper {
     List<Category> findOneCategory();

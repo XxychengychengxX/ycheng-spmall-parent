@@ -5,7 +5,7 @@
 
     <!-- 日志的输出目录 -->
     <property name="log.path"
-              value="D:\Java-project\Personal Project\ycheng-spmall-parent\spmall-service\cart-service\logs"/>
+              value="D:\Java-project\Personal Project\ycheng-spmall-parent\spmall-service\service-cart\logs"/>
 
     <!--控制台日志格式：彩色日志-->
     <!-- magenta:洋红 -->

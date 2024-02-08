@@ -6,11 +6,12 @@ import lombok.Data;
 @Data
 public class YchengException extends RuntimeException {
 
-
-    private Integer code ;          // 错误状态码
-    private String message ;        // 错误消息
-
-    private ResultCodeEnum resultCodeEnum ;     // 封装错误状态码和错误消息
+    // 错误状态码
+    private Integer code ;
+    // 错误消息
+    private String message ;
+    // 封装错误状态码和错误消息
+    private ResultCodeEnum resultCodeEnum ;
 
     public YchengException(ResultCodeEnum resultCodeEnum) {
         this.resultCodeEnum = resultCodeEnum ;

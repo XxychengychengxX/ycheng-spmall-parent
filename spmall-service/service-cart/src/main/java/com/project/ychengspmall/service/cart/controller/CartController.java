@@ -15,12 +15,21 @@ import java.util.List;
  @Date 2024/1/21
  */
 @RestController
-@RequestMapping("api/order/cart")
+@RequestMapping("/api/order/cart")
 public class CartController {
 
     @Resource
     private CartService cartService;
 
+    /**
+     * 查询购物车
+     * @return
+     */
+    @GetMapping("/auth/cartList")
+    public Result<List<CartInfo>> cartList() {
+        List<CartInfo> cartInfoList = cartService.getCartList();
+        return Result.build(cartInfoList, ResultCodeEnum.SUCCESS);
+    }
     /**
      * 添加到购物车
      * @param skuId 商品skuId
@@ -32,6 +41,16 @@ public class CartController {
                              @PathVariable("skuNum") Integer skuNum) {
         cartService.addToCart(skuId, skuNum);
         return Result.build(null, ResultCodeEnum.SUCCESS);
+    }
+
+    /**
+     * 清空购物车
+     * @return
+     */
+    @GetMapping(value = "/auth/deleteChecked")
+    public Result deleteChecked() {
+        cartService.deleteChecked() ;
+        return Result.build(null , ResultCodeEnum.SUCCESS) ;
     }
 
     /**

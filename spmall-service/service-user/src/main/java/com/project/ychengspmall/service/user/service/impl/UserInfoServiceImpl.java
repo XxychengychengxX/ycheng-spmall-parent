@@ -107,17 +107,20 @@ public class UserInfoServiceImpl implements UserInfoService {
         //生成token并返回
         String token = UUID.randomUUID().toString().replaceAll("-", "");
         stringRedisTemplate.opsForValue()
-                .set("user:spzx:" + token, JSON.toJSONString(userInfo), 30, TimeUnit.DAYS);
+                .set("user:spmall:" + token, JSON.toJSONString(userInfo), 30, TimeUnit.DAYS);
         return token;
     }
 
     @Override
     public UserInfoVo getCurrentUserInfo(String token) {
-       /* String userInfoJSON = stringRedisTemplate.opsForValue().get("user:spzx:" + token);
-        if (StrUtil.isEmpty(userInfoJSON)) {
+       /* log.info(token);
+        String userinfojson = stringRedisTemplate.opsForValue().get("user:spmall:" + token);
+        log.info(userinfojson);
+        if (StrUtil.isBlank(userinfojson)) {
             throw new YchengException(ResultCodeEnum.LOGIN_AUTH);
         }
-        UserInfo userInfo = JSON.parseObject(userInfoJSON, UserInfo.class);
+        UserInfo userInfo = JSON.parseObject(userinfojson, UserInfo.class);
+        log.info(userInfo.toString());
         UserInfoVo userInfoVo = new UserInfoVo();
         BeanUtils.copyProperties(userInfo, userInfoVo);
         return userInfoVo;*/
@@ -127,5 +130,10 @@ public class UserInfoServiceImpl implements UserInfoService {
         UserInfoVo userInfoVo = new UserInfoVo();
         BeanUtils.copyProperties(userInfo, userInfoVo);
         return userInfoVo;
+    }
+
+    @Override
+    public void logout(String token) {
+        stringRedisTemplate.opsForValue().getAndDelete("user:spmall:" + token);
     }
 }

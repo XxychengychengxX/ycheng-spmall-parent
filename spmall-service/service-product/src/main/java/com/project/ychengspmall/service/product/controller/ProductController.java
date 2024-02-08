@@ -7,7 +7,6 @@ import com.project.ychengspmall.model.vo.common.Result;
 import com.project.ychengspmall.model.vo.common.ResultCodeEnum;
 import com.project.ychengspmall.model.vo.h5.ProductItemVo;
 import com.project.ychengspmall.service.product.service.ProductService;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,12 +51,12 @@ public class ProductController {
     }
 
     /**
-     * 根据skuId获取商品sku
+     * 根据skuId获取商品sku信息
      * @param skuId 商品skuId
      * @return 商品sku具体信息
      */
     @GetMapping("getBySkuId/{skuId}")
-    public ProductSku getBySkuId(@Parameter(name = "skuId", description = "商品skuId", required = true) @PathVariable Long skuId) {
+    public ProductSku getBySkuId(@PathVariable Long skuId) {
         ProductSku productSku = productService.getBySkuId(skuId);
         return productSku;
     }

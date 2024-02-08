@@ -4,14 +4,12 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 @SpringBootApplication
 @EnableCaching
-@CrossOrigin
 @MapperScan(basePackages = "com.project.ychengspmall.service.product.mapper")
-public class ProductApplication {
+public class ProductServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ProductApplication.class, args);
+        SpringApplication.run(ProductServiceApplication.class, args);
     }
 }

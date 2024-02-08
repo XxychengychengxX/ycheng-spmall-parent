@@ -40,7 +40,6 @@ import java.util.Map;
 
 @Component
 @Slf4j
-@ConditionalOnMissingBean(HttpUtils.class)
 public class HttpUtils {
     @Resource
     CloseableHttpClient httpClient;
@@ -126,19 +125,21 @@ public class HttpUtils {
             throws Exception {
 
 
-        HttpPost request = new HttpPost(buildUrl(host, path, querys));
+        String uri = buildUrl(host, path, querys);
+        log.info(uri);
+        HttpPost request = new HttpPost(uri);
         for (Map.Entry<String, String> e : headers.entrySet()) {
             request.addHeader(e.getKey(), e.getValue());
         }
 
         if (bodys != null) {
-            List<NameValuePair> nameValuePairList = new ArrayList<NameValuePair>();
+            List<NameValuePair> nameValuePairList = new ArrayList<>();
 
             for (String key : bodys.keySet()) {
                 nameValuePairList.add(new BasicNameValuePair(key, bodys.get(key)));
             }
             UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(nameValuePairList, "utf-8");
-            formEntity.setContentType("application/x-www-form-urlencoded; charset=UTF-8");
+            formEntity.setContentType("application/x-www-form-urlencoded;charset=UTF-8");
             request.setEntity(formEntity);
         }
 
@@ -152,7 +153,6 @@ public class HttpUtils {
      * @param method 请求方法
      * @param headers 请求头
      * @param querys 请求参数
-     * @param bodys 请求体
      * @return http response
      * @throws Exception
      */

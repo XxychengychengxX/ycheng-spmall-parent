@@ -13,9 +13,9 @@ import java.lang.annotation.Target;
 public @interface Log {		// 自定义操作日志记录注解
 
     @AliasFor("description")
-    String title();								// 模块名称
+    String title() default "";								// 模块名称
     @AliasFor("title")
-    String description();
+    String description() default "";
     
     OperatorType operatorType() default OperatorType.MANAGE;	// 操作人类别
     int businessType() ;     // 业务类型（0其它 1新增 2修改 3删除）

@@ -15,4 +15,8 @@ public interface UserAddressMapper {
     List<UserAddress> findByUserId(Long userId);
 
     UserAddress getById(Long id);
+
+    void save(UserAddress userAddress);
+
+    void setDeleteById(Long id);
 }

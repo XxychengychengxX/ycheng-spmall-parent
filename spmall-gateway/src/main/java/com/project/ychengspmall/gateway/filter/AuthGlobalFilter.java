@@ -1,5 +1,6 @@
 package com.project.ychengspmall.gateway.filter;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.text.AntPathMatcher;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.excel.event.Order;
@@ -13,13 +14,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.io.buffer.DataBuffer;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
@@ -27,7 +29,7 @@ import java.util.List;
 @Slf4j
 public class AuthGlobalFilter implements GlobalFilter, Order {
     @Resource
-    private RedisTemplate<String, String> redisTemplate;
+    private StringRedisTemplate stringRedisTemplate;
 
     private AntPathMatcher antPathMatcher = new AntPathMatcher();
 
@@ -36,15 +38,19 @@ public class AuthGlobalFilter implements GlobalFilter, Order {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         String path = request.getURI().getPath();
+        URI uri = request.getURI();
+        log.info("uri {}", uri);
         log.info("path {}", path);
-
-        UserInfo userInfo = this.getUserInfo(request);
         //api接口，异步请求，校验用户必须登录
         if (antPathMatcher.match("/api/**/auth/**", path)) {
+            //todo: 这里返回一个对象根本就没有必要，只需要判断返回的字符串是不是空就行
+            UserInfo userInfo = this.getUserInfo(request);
+            log.info("check login status");
             if (null == userInfo) {
                 ServerHttpResponse response = exchange.getResponse();
                 return out(response, ResultCodeEnum.LOGIN_AUTH);
             }
+            log.info(userInfo.toString());
         }
 
         return chain.filter(exchange);
@@ -72,16 +78,16 @@ public class AuthGlobalFilter implements GlobalFilter, Order {
      */
     private UserInfo getUserInfo(ServerHttpRequest request) {
         String token = "";
-        List<String> tokenList = request.getHeaders().get("token");
-        if (null != tokenList) {
+        List<String> tokenList = request.getHeaders().get("Token");
+        if (CollUtil.isNotEmpty(tokenList)) {
             token = tokenList.get(0);
         }
         if (!StrUtil.isEmpty(token)) {
-            String userInfoJSON = redisTemplate.opsForValue().get("user:spzx:" + token);
-            if (StrUtil.isEmpty(userInfoJSON)) {
+            String userinfojson = stringRedisTemplate.opsForValue().get("user:spmall:" + token);
+            if (StrUtil.isEmpty(userinfojson)) {
                 return null;
             } else {
-                return JSON.parseObject(userInfoJSON, UserInfo.class);
+                return JSON.parseObject(userinfojson, UserInfo.class);
             }
         }
         return null;

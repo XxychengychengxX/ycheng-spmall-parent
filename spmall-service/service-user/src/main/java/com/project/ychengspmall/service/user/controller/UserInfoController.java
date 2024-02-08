@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * 用户接口
  */
 @RestController
-@RequestMapping("api/user/userInfo")
+@RequestMapping("/api/user/userInfo")
 public class UserInfoController {
 
     @Resource
@@ -33,6 +33,13 @@ public class UserInfoController {
         return Result.build(null , ResultCodeEnum.SUCCESS) ;
     }
 
+
+    @GetMapping("/logout")
+    public Result logout(@RequestHeader("Token") String token) {
+        userInfoService.logout(token);
+        return Result.build(null , ResultCodeEnum.SUCCESS);
+
+    }
     /**
      * 会员登录
      * @param userLoginDto
@@ -45,12 +52,12 @@ public class UserInfoController {
 
     /**
      * 获取当前登录用户信息
-     * @param request
+     * @param token 请求头中携带的token
      * @return
      */
-    @GetMapping("auth/getCurrentUserInfo")
-    public Result<UserInfoVo> getCurrentUserInfo(HttpServletRequest request) {
-        String token = request.getHeader("token");
+    @GetMapping("/auth/getCurrentUserInfo")
+    public Result<UserInfoVo> getCurrentUserInfo(@RequestHeader("Token") String token) {
+
         UserInfoVo userInfoVo = userInfoService.getCurrentUserInfo(token) ;
         return Result.build(userInfoVo , ResultCodeEnum.SUCCESS) ;
     }

@@ -10,7 +10,7 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.http.HttpResponse;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.http.util.EntityUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -36,8 +36,8 @@ public class SmsServiceImpl implements SmsService {
         if (StrUtil.hasLetter(code)) {
             return;
         }
-
-        String validateCode = RandomStringUtils.randomNumeric(4);      // 生成验证码
+        // 生成验证码
+        String validateCode = RandomStringUtils.randomNumeric(4);
         stringRedisTemplate.opsForValue()
                 .set("phone:code:" + phone, validateCode, 5, TimeUnit.MINUTES);
         sendSms(phone, validateCode);
@@ -71,7 +71,9 @@ public class SmsServiceImpl implements SmsService {
              */
             HttpResponse response = httpUtils.doPost(host, path, method, headers, querys,
                     bodys);
-            log.info(response.toString());
+            //log.info(response.toString());
+            //记录返回结果
+            log.info(EntityUtils.toString(response.getEntity()));
             //获取response的body
             //System.out.println(EntityUtils.toString(response.getEntity()));
         } catch (Exception e) {

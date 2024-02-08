@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 短信验证码接口
  */
 @RestController
-@RequestMapping("api/user/sms")
+@RequestMapping("/api/user/sms")
 public class SmsController {
 
     @Resource

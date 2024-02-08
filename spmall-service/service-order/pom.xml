@@ -19,6 +19,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.project.ychengspmall</groupId>
             <artifactId>service-client-cart</artifactId>
             <version>1.0-SNAPSHOT</version>
@@ -27,6 +31,18 @@
             <groupId>com.project.ychengspmall</groupId>
             <artifactId>service-client-user</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.project.ychengspmall</groupId>
+            <artifactId>service-client-product</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.project.ychengspmall</groupId>
+            <artifactId>spmall-manager</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

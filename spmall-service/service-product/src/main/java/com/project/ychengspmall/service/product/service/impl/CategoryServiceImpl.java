@@ -22,13 +22,17 @@ public class CategoryServiceImpl implements CategoryService {
     @Resource
     StringRedisTemplate stringRedisTemplate;
     @Resource
-    private CategoryMapper categoryMapper;
+    CategoryMapper categoryMapper;
 
     @Override
     public List<Category> findOneCategory() {
         return categoryMapper.findOneCategory();
     }
 
+
+    /*
+    这个注解目前生成的是category::all
+    @Cacheable(value = "category" , key = "'all'")*/
     @Override
     public List<Category> findCategoryTree() {
         /*List<Category> categoryList = categoryMapper.findAll();

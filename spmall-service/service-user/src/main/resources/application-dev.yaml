@@ -8,6 +8,12 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        namespace: e296748c-84fa-4cf9-a941-3cde0a44e8d5
+    sentinel:
+      log:
+        dir: E:\Java Project\Personal\ycheng-spmall-parent\spmall-service\service-user\log
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -21,17 +27,19 @@ spring:
 
 mybatis:
   config-location: classpath:mybatis-config.xml
-  mapper-locations: classpath:mapper/*/*.xml
+  mapper-locations: classpath:/mapper/*.xml
 
 http-client:
   max-total: 100
-  default-max-per-route: 20
-  connect-timeout: 10000
+  default-max-per-route: 100
+  connect-timeout: 2000
   connection-request: 5000
-  socket-timeout: 10000
+  socket-timeout: 2000
   validate-after-inactivity: 2000
 
 sms-user:
   app-code: ef2f1fcd234f451297354d94d07776ad
   app-secret: 9bbBfh13JmKQIYvW0FKtUg5WIM2bgZM8
   app-key: 204517503
+logging:
+  config: classpath:logback-spring.xml

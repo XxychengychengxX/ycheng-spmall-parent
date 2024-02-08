@@ -15,6 +15,7 @@
         <module>service-client-product</module>
         <module>service-client-cart</module>
         <module>service-client-user</module>
+        <module>service-client-order</module>
     </modules>
 
     <properties>

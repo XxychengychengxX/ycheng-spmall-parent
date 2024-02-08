@@ -30,8 +30,9 @@ public class ExcelListener<T> extends AnalysisEventListener<T> {
     public void invoke(T o, AnalysisContext analysisContext) {
         CategoryExcelVo data = (CategoryExcelVo)o;
         cachedDataList.add(data);
-        // 达到BATCH_COUNT了，需要去存储一次数据库，防止数据几万条数据在内存，容易OOM
+        //todo:这里有一个imageUrl不知道如何处理
         if (cachedDataList.size() >= BATCH_COUNT) {
+            // 达到BATCH_COUNT了，需要去存储一次数据库，防止数据几万条数据在内存，容易OOM
             saveData();
             // 存储完成清理 list
             cachedDataList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);

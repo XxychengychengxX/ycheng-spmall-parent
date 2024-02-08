@@ -30,7 +30,7 @@ public class CategoryController {
         categoryService.exportData(response);
     }
 
-    @PostMapping("importData")
+    @PostMapping("/importData")
     public Result importData(MultipartFile file) {
         categoryService.importData(file);
         return Result.build(null, ResultCodeEnum.SUCCESS);

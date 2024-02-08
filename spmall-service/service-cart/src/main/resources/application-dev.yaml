@@ -2,14 +2,24 @@ server:
   port: 8513
 
 spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://8.130.12.102:3306/db_spmall?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=true
+    username: root
+    password: 111
   application:
     name: service-cart
   cloud:
+    sentinel:
+      log:
+        dir: E:\Java Project\Personal\ycheng-spmall-parent\spmall-service\service-cart\log
     nacos:
       discovery:
-        server-addr: 8.130.12.102:8848
+        server-addr: localhost:8848
         username: nacos
         password: nacos
+        namespace: e296748c-84fa-4cf9-a941-3cde0a44e8d5
   data:
     redis:
       host: 8.130.12.102

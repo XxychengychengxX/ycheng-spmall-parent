@@ -12,4 +12,8 @@ public interface UserAddressService {
     List<UserAddress> findUserAddressList();
 
     UserAddress getById(Long id);
+
+    void save(UserAddress userAddress);
+
+    void deleteById(Long id);
 }

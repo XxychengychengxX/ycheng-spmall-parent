@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * 分类接口
+ * @author XxychengychengxX
  */
 @RestController
 @RequestMapping(value="/api/product/category")
@@ -33,4 +34,5 @@ public class CategoryController {
         List<Category> list = categoryService.findCategoryTree();
         return Result.build(list,  ResultCodeEnum.SUCCESS);
     }
+
 }

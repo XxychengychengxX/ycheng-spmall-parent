@@ -15,7 +15,7 @@ public class UserTokenFeignInterceptor implements RequestInterceptor {
     public void apply(RequestTemplate template) {
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = requestAttributes.getRequest();
-        String token = request.getHeader("token");
-        template.header("token" , token) ;
+        String token = request.getHeader("Token");
+        template.header("Token" , token) ;
     }
 }

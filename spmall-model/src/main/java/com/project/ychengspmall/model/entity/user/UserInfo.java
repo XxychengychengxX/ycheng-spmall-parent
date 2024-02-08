@@ -4,6 +4,7 @@ import com.project.ychengspmall.model.entity.base.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.io.Serial;
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Schema(description = "用户实体类")
+@ToString
 public class UserInfo extends BaseEntity {
 
    @Serial

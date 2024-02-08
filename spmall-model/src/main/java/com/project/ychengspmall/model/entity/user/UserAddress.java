@@ -41,5 +41,4 @@ public class UserAddress extends BaseEntity {
 
     @Schema(description = "是否默认地址（0：否 1：是）")
     private Integer isDefault;
-
 }

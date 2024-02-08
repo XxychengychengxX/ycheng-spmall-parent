@@ -29,7 +29,7 @@ public class SysUserController {
     }
 
     @PostMapping(value = "/saveSysUser")
-    @Log(title = "新增用户",businessType = 0)
+    @Log(title = "新增用户", description = "新增用户", businessType = 0)
     public Result saveSysUser(@RequestBody SysUser sysUser) {
         sysUserService.saveSysUser(sysUser) ;
         return Result.build(null , ResultCodeEnum.SUCCESS) ;
