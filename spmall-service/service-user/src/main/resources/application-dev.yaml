@@ -10,7 +10,6 @@ spring:
         server-addr: localhost:8848
         username: nacos
         password: nacos
-        namespace: e296748c-84fa-4cf9-a941-3cde0a44e8d5
     sentinel:
       log:
         dir: E:\Java Project\Personal\ycheng-spmall-parent\spmall-service\service-user\log

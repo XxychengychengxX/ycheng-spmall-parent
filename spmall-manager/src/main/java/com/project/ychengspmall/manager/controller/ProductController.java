@@ -10,6 +10,9 @@ import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 商品控制器
+ */
 @RestController
 @RequestMapping(value = "/admin/product/product")
 public class ProductController {

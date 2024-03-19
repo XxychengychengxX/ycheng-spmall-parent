@@ -1,6 +1,6 @@
 # 配置服务端口号
 server:
-  port: 8501
+  port: 6379
 
 # 配置数据库连接信息
 spring:

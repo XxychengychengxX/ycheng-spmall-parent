@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * 分类品牌控制器
+ */
 @RestController
 @Slf4j
 @RequestMapping(value = "/admin/product/category-brand")

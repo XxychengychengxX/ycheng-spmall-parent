@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 订单信息控制器
+ */
 @RestController
 @Slf4j
 @RequestMapping(value="/admin/order/orderInfo")

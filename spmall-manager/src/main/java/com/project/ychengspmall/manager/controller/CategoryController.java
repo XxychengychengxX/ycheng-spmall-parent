@@ -12,6 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+/**
+ * 分类控制器
+ */
 @RestController
 @RequestMapping(value = "/admin/product/category")
 public class CategoryController {

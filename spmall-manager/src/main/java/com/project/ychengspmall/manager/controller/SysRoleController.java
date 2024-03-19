@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+/**
+ * 角色管理控制器
+ */
 @RestController
 @Slf4j
 @RequestMapping(value = "/admin/system/sysRole")

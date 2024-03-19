@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 菜单管理控制器
+ */
 @RestController
 @Slf4j
 @RequestMapping(value = "/admin/system/sysMenu")

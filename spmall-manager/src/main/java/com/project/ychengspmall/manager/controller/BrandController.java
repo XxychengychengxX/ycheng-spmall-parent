@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 商品品牌接口
+ * 品牌控制器
  * @author admin
  */
 @RestController

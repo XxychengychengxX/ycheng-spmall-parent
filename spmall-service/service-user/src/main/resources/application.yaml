@@ -1,3 +1,10 @@
 spring:
-  profiles:
-    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 8.130.129.158:8848
+        username: nacos
+        password: nacos
+  config:
+    import:
+      - nacos:service-user-dev.yml

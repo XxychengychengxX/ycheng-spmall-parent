@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+/**
+ * 角色菜单控制器
+ */
 @RestController
 @RequestMapping(value = "/admin/system/sysRoleMenu")
 public class SysRoleMenuController {

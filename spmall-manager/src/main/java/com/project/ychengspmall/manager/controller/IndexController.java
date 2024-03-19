@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 登录界面请求
+ * 登录界面控制器
  */
 @RestController
 @RequestMapping("/admin/system/index")
